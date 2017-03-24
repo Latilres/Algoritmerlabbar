@@ -1,6 +1,6 @@
 // Author(s): Fressia Merino & Therese Tengdahl
 // Email: espinosa@student.chalmers.se & theten@student.chalmers.se
-// Date:
+// Date: 2017-03-24
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

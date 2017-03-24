@@ -1,12 +1,11 @@
-// Author(s):
-// Version:
-// Date:
+// Author(s): Fressia Merino & Therese Tengdahl
+// Email: espinosa@student.chalmers.se & theten@student.chalmers.se
+// Date: 2017-03-25
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Scanner;
 import java.util.TreeMap;
 
 public class WordLists {
@@ -15,6 +14,7 @@ public class WordLists {
 
     public WordLists(String inputFileName) {
 
+        int i;
         String temp;
         try {
             in = new FileReader(inputFileName);
@@ -23,14 +23,19 @@ public class WordLists {
         }
         while (true){
             try {
-                if ((temp = getWord())!= null)
-                    allTheWords.put(temp, 1);
-                else
+                if ((temp = getWord())!= null) {
+                    if (allTheWords.containsKey(temp)) {
+                        i = allTheWords.get(temp);
+                        allTheWords.put(temp, ++i);
+                    } else
+                        allTheWords.put(temp, 1);
+                } else
                     break;
             } catch (IOException e){
                 e.printStackTrace();
             }
         }
+        //System.out.println(allTheWords);
     }
 
     private boolean isPunctuationChar(char c) {
@@ -68,27 +73,37 @@ public class WordLists {
     }
 
     private String reverse(String s) {
-        // define!
+        // todo: ta s och skicka tillbaka den med alla bokstäver omsorterat till baklänges
         return "hej";
     }
 
     private void computeWordFrequencies() {
-        // define!
+        // define! todo: vi tror att den här är frekvensordlista
+        // kolla om filen finns
+        // skapa/öppna filen
     }
 
 
     private void computeFrequencyMap() {
-        // define!
+        // define! todo: jag och min kille tror att den här ska vara i bokstavsordning
+        // kolla om filen finns
+        // skapa/öppna filen
+        // skriv i den (skriv över om det finns text i den, tror jag)
     }
 
 
     private void computeBackwardsOrder() {
-        // define!
+        // todo
+        // kolla om filen finns
+        // skapa/öppna filen
+        // släng in varje ord i reverse-metoden
+        // lägg in returen som key i en ny TreeMap med orginalordet som value
+        // skriv ut value i filen, i den ordning som key kommer. och med högermarginal?
     }
 
     public static void main(String[] args) throws IOException {
         // todo:sätt tillbaka args[0] i new wordlists
-        WordLists wl = new WordLists("provtext.txt");  // arg[0] contains the input file name
+        WordLists wl = new WordLists("woodchuck.txt");  // arg[0] contains the input file name
         wl.computeWordFrequencies();
         wl.computeFrequencyMap();
         wl.computeBackwardsOrder();
