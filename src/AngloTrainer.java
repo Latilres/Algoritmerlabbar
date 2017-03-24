@@ -31,9 +31,8 @@ public class AngloTrainer {
         Scanner theInput = new Scanner(System.in);
         String testWord;
         try {
-            while ((testWord = theInput.nextLine()) != null) {
-
-
+            while ( theInput.hasNextLine()) {
+                testWord = theInput.nextLine();
                 Boolean doExist = includes(sort(randLetters), sort(testWord));
                 if (doExist) {
                     boolean inDictionary = ourDictionary.contains(testWord);
