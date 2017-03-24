@@ -13,9 +13,8 @@ public class AngloTrainer {
     private int longestWord;
     private Random randomGenerator;
     private String randLetters;
-    private boolean notFailed;
 
-    public AngloTrainer(String dictionaryFile) throws IOException {
+    public AngloTrainer(String dictionaryFile) {
 
         randomGenerator = new Random();
         loadDictionary(dictionaryFile);
@@ -30,10 +29,10 @@ public class AngloTrainer {
 
     private void checkIfIncluded(){
         Scanner theInput = new Scanner(System.in);
-        //notFailed = true;
+        String testWord;
         try {
-            while (theInput.hasNext()) {
-                String testWord = theInput.nextLine();
+            while ((testWord = theInput.nextLine()) != null) {
+
 
                 Boolean doExist = includes(sort(randLetters), sort(testWord));
                 if (doExist) {
@@ -41,18 +40,16 @@ public class AngloTrainer {
                     if (inDictionary) {
                         System.out.println("ok!");
                     } else {
-                        //notFailed = false;
                         System.out.println("Your suggestion was not found in the dictionary.");
                         break;
                     }
                 } else {
-                    //notFailed = false;
                     System.out.println("Your suggestion was not a valid choice.");
                     break;
                 }
             }
             dumpDict();
-        } catch (Exception e){
+        } catch (Error e){
             dumpDict();
         }
     }
@@ -161,8 +158,7 @@ public class AngloTrainer {
     }
 
     public static void main(String[] args) throws IOException {
-        AngloTrainer anglo = new AngloTrainer("dictionary.txt");
-
+            AngloTrainer anglo = new AngloTrainer("dictionary.txt");
     }
 }
 

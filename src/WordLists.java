@@ -2,14 +2,35 @@
 // Version:
 // Date:
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Scanner;
+import java.util.TreeMap;
 
 public class WordLists {
     private Reader in = null;
+    private TreeMap<String, Integer> allTheWords = new TreeMap<>();
 
     public WordLists(String inputFileName) {
-        // ... define!
+
+        String temp;
+        try {
+            in = new FileReader(inputFileName);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        while (true){
+            try {
+                if ((temp = getWord())!= null)
+                    allTheWords.put(temp, 1);
+                else
+                    break;
+            } catch (IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     private boolean isPunctuationChar(char c) {
@@ -66,7 +87,8 @@ public class WordLists {
     }
 
     public static void main(String[] args) throws IOException {
-        WordLists wl = new WordLists(args[0]);  // arg[0] contains the input file name
+        // todo:sätt tillbaka args[0] i new wordlists
+        WordLists wl = new WordLists("provtext.txt");  // arg[0] contains the input file name
         wl.computeWordFrequencies();
         wl.computeFrequencyMap();
         wl.computeBackwardsOrder();
