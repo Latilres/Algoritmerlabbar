@@ -3,14 +3,14 @@
 // Date: 2017-03-25
 
 import java.io.*;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class WordLists {
     private Reader in = null;
     private TreeMap<String, Integer> allTheWords = new TreeMap<>();
-    private TreeMap<String, String> allTheWordsReverse = new TreeMap<>();
+    private List<String> reverseList = new ArrayList<>();
     private int highestValue;
+    int longestKey;
 
     // Creates a word list of all the words in a given text.
     public WordLists(String inputFileName) {
@@ -27,8 +27,14 @@ public class WordLists {
                     if (allTheWords.containsKey(temp)) {
                         i = allTheWords.get(temp);
                         allTheWords.put(temp, ++i);
-                    } else
+                        if (highestValue < i)
+                            highestValue = i;
+                        if (longestKey < temp.length())
+                            longestKey = temp.length();
+                    } else {
                         allTheWords.put(temp, 1);
+                        reverseList.add(temp);
+                    }
                 } else
                     break;
             } catch (IOException e){
@@ -122,27 +128,24 @@ public class WordLists {
 
     // Creates an reversed alphabetical word list of the words in the file.
     private void computeBackwardsOrder() {
-        String value;
-        int longestKey = 0;
-        for (Map.Entry<String, Integer> entry : allTheWords.entrySet()) {
-            allTheWordsReverse.put(reverse(entry.getKey()), entry.getKey());
-            if (longestKey < entry.getKey().length())
-                longestKey = entry.getKey().length();
-            if (highestValue < entry.getValue())
-                highestValue = entry.getValue();
-        }
+        Collections.sort(reverseList, new Comparator<String>() {
+            public int compare(String o1, String o2) {
+                return reverse(o1).compareTo(reverse(o2));
+            }
+        });
+
         try{
             PrintWriter out = new PrintWriter(new FileWriter("backwardsSorted.txt"));
-            for (Map.Entry<String, String> entry : allTheWordsReverse.entrySet()) {
-                value = entry.getValue();
+            for (String word : reverseList) {
+                // Because it looks better this way
                 if (longestKey < 10)
-                    out.println( String.format("%10s", value));
+                    out.println( String.format("%10s", word));
                 else if (longestKey < 20)
-                    out.println( String.format("%20s", value));
+                    out.println( String.format("%20s", word));
                 else if (longestKey < 30)
-                    out.println( String.format("%30s", value));
+                    out.println( String.format("%30s", word));
                 else
-                    out.println( String.format("%40s", value));
+                    out.println( String.format("%40s", word));
             }
             out.close();
         }catch (IOException e){
@@ -151,10 +154,11 @@ public class WordLists {
     }
 
     public static void main(String[] args) throws IOException {
-        WordLists wl = new WordLists(args[0]);  // arg[0] contains the input file name
-        wl.computeBackwardsOrder();
+        //WordLists wl = new WordLists(args[0]);  // arg[0] contains the input file name
+        WordLists wl = new WordLists("woodchuck.txt");
         wl.computeFrequencyMap();
         wl.computeWordFrequencies();
+        wl.computeBackwardsOrder();
 
         System.out.println("Finished!");
     }

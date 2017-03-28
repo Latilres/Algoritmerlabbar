@@ -95,11 +95,9 @@ public class AngloTrainer {
 
     // Sorts the given string and returns it.
     private String sort(String inNeedOfSorting){
-        String original = inNeedOfSorting;
-        char[] chars = original.toCharArray();
+        char[] chars = inNeedOfSorting.toCharArray();
         Arrays.sort(chars);
-        String sorted = new String(chars);
-        return sorted;
+        return new String(chars);
     }
 
     /* Def. includes
@@ -158,7 +156,7 @@ public class AngloTrainer {
     }
 
     public static void main(String[] args) throws IOException {
-        AngloTrainer anglo = new AngloTrainer("dictionary.txt");
+        AngloTrainer anglo = new AngloTrainer("lab1/dictionary.txt");
     }
 }
 
