@@ -88,9 +88,10 @@ public class Main  {
          lindholmen.add("Saga");
          lindholmen.add("Svea");
          lindholmen.add("Jupiter");
-         CollectionOps.less(li1,li2,intcomp);
-         CollectionOps.less(li1,li3,intcomp);
-         CollectionOps.less(johanneberg,lindholmen,stringcomp);
+         System.out.println(CollectionOps.less(li1,li2,intcomp));
+         System.out.println(CollectionOps.less(li1,li3,intcomp));
+         //System.out.println(CollectionOps.less(johanneberg,lindholmen,stringcomp));
+         //System.out.println(CollectionOps.less(lindholmen, johanneberg,stringcomp));
 
          // Assignment 5: Write code to test map here
              

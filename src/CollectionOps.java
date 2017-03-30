@@ -33,12 +33,13 @@ public class CollectionOps {
     public static <T> boolean less(Collection<T> c1,
                                    Collection<T> c2,
                                    Comparator<T> comp){
-        //Collections.sort(c1, comp);
+        if ((Collections.max(c1,comp)comp.equals(Collections.min(c2,comp))))
+            return true;
 
 
-        return true;
+        return false;
     }
-    
+
     // Example
     public static <T,R> Collection<R>
     map(Function<T,R> f,Collection<T> c) 
