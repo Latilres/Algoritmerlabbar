@@ -90,12 +90,32 @@ public class Main  {
          lindholmen.add("Jupiter");
          System.out.println(CollectionOps.less(li1,li2,intcomp));
          System.out.println(CollectionOps.less(li1,li3,intcomp));
-         //System.out.println(CollectionOps.less(johanneberg,lindholmen,stringcomp));
-         //System.out.println(CollectionOps.less(lindholmen, johanneberg,stringcomp));
+         System.out.println(CollectionOps.less(johanneberg,lindholmen,stringcomp));
+         System.out.println(CollectionOps.less(lindholmen, johanneberg,stringcomp));
 
          // Assignment 5: Write code to test map here
-             
+        List<Double> l1 = new ArrayList<Double>(); 
+         // lägg in talen 23.4, -19.0, 377.62, 0.0, 18.9, -32.12 i listan
+         l1.add(23.4);
+         l1.add(-19.0);
+         l1.add(377.62);
+         l1.add(0.0);
+         l1.add(18.9);
+         l1.add(-32.12);
+         List<Integer>l2 = (List<Integer>)map(new Sign(), l1);
+         print(l2);				//[1,-1,1,0,1,-1]
+        
          // Assignment 5: Write code to test filter here
+        List<Integer> l3 = new ArrayList<Integer>();
+         l3.add(3);
+         l3.add(-42);
+         l3.add(88);
+         l3.add(13);
+         l3.add(-37);
+         l3.add(0);
+         l3.add(18);
+         List<Integer>l4 = (List<Integer>)filter(new IsEven(), l3);
+         print(l4);           //[-42,88,0,18]
 
          /*
          ArrayList<Person> pl = new ArrayList<>();
