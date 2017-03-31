@@ -1,9 +1,9 @@
 
-public class IsEven implements Predicate{
+public class IsEven implements Predicate<Integer>{
 
 
     @Override
-    public boolean test(Object x) {
-        return false;
+    public boolean test(Integer x) {
+        return x % 2 == 0;
     }
 }
