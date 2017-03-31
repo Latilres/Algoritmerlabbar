@@ -6,7 +6,7 @@ import java.io.*;
 
 public class TestSingleBuffer {
 	
-   /*
+
     public static void main(String[] args) throws IOException  {
 
         BufferedReader in  = new BufferedReader(new InputStreamReader(System.in));
@@ -36,5 +36,5 @@ public class TestSingleBuffer {
                 System.out.println("Unknown command");
         }
     }
-    */
+
 }
