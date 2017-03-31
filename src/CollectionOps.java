@@ -33,11 +33,15 @@ public class CollectionOps {
     public static <T> boolean less(Collection<T> c1,
                                    Collection<T> c2,
                                    Comparator<T> comp){
-        //if ((Collections.max(c1)comp.compare(Collections.min(c2))))
+ 
+    	// så här hade vi gjort --> int1comp.compare(int2);
+    	// if ((Collections.max(c1)comp.compare(Collections.min(c2))))
+        // så här ska det struktureras --> comp.compare(int1, int2);
+        if (((comp.compare(Collections.max(c1, comp), Collections.min(c2, comp))) < 0)) {
             return true;
-
-
-        //return false;
+        }
+        else
+        	return false;
     }
 
     // Example
