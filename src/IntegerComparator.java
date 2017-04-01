@@ -1,3 +1,7 @@
+// Author(s): Fressia Merino & Therese Tengdahl
+// Email: espinosa@student.chalmers.se & theten@student.chalmers.se
+// Date: 2017-04-01
+
 import java.util.Comparator;
 
 class IntegerComparator implements Comparator<Integer> {

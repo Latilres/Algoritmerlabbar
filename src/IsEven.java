@@ -1,5 +1,6 @@
+import collection.Predicate;
 
-public class IsEven implements Predicate<Integer>{
+public class IsEven implements Predicate<Integer> {
     
     @Override
     public boolean test(Integer x) {

@@ -1,8 +1,4 @@
-// Author(s): Fressia Merino & Therese Tengdahl
-// Email: espinosa@student.chalmers.se & theten@student.chalmers.se
-// Date: 2017-03-24
-
-import java.util.function.Function;
+import collection.*;
 
 public class Sign implements Function<Double,Integer> {
     public Integer apply(Double x) {

@@ -1,33 +1,27 @@
 // Author(s): Fressia Merino & Therese Tengdahl
 // Email: espinosa@student.chalmers.se & theten@student.chalmers.se
-// Date: 2017-03-24
+// Date: 2017-04-01
 
-public class SingleBuffer {
-//public static <T> List<T> reverse(List<T> reverseCollection){
+public class SingleBuffer<T> {
 
-    private String [] theBuffer;
-    public SingleBuffer(){
+    private T theBuffer = null;
 
-    }
-
-    public boolean put(String input){
-        theBuffer = new String[input.length()];
-
-        if (theBuffer[0] != null)
+    public boolean put(T input){
+        if (theBuffer != null)
             return false;
         else {
-            theBuffer[0] = input;
+            theBuffer = input;
             return true;
         }
     }
 
-    public String get(){
-        String temp;
-        if (theBuffer[0] == null)
+    public T get(){
+        T temp;
+        if (theBuffer == null)
             return null;
         else {
-            temp = theBuffer[0];
-            theBuffer[0] = null;
+            temp = theBuffer;
+            theBuffer = null;
             return temp;
         }
     }

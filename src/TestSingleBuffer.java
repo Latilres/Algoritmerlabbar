@@ -1,23 +1,17 @@
-// Author(s): Fressia Merino & Therese Tengdahl
-// Email: espinosa@student.chalmers.se & theten@student.chalmers.se
-// Date: 2017-03-24
-
 import java.io.*;
 
 public class TestSingleBuffer {
-	
 
     public static void main(String[] args) throws IOException  {
 
         BufferedReader in  = new BufferedReader(new InputStreamReader(System.in));
-		
 
         //  Define the object stringBuf of type SingleBuffer here...
         SingleBuffer<String> stringBuf = new SingleBuffer<String>();
 
 
         while ( true ) {
-            System.out.print("Command (p/g/q): "); 
+            System.out.print("Command (p/g/q): ");
             String command = in.readLine();
             if (command.equals("p")) {
                 System.out.print("Text: "); System.out.flush();
