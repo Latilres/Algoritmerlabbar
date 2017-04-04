@@ -5,19 +5,18 @@
  * @version 2016-04-19
  */
 public class Lists {
-   
+
     // Create an empty list (a null terminated list head).
     public static ListNode mkEmpty() {
         return toList("");
     }
-    
+
     // Returns true if l refers to a null terminated list head, false ow.
     public static boolean isEmpty(ListNode l) {
         if ( l == null )
             throw new ListsException("Lists: null passed to isEmpty");
         return l.next == null;
     }
-    
 
     // Two lists are equal if both are empty, or if they have equal lengths
     // and contain pairwise equal elements at the same positions.
@@ -40,25 +39,25 @@ public class Lists {
             return p1 == null && p2 == null;
         }
     }
-    
-    // Se förel. OH
+
+    // Se fï¿½rel. OH
     public static ListNode toList(String chars) {
-        ListNode head, ptr1;     // head pekar alltid på listans huvud
-        head = new ListNode();   // Listans huvud (innehåller ej data)
+        ListNode head, ptr1;     // head pekar alltid pï¿½ listans huvud
+        head = new ListNode();   // Listans huvud (innehï¿½ller ej data)
         head.next = null;
-        ptr1 = head;             // ptr pekar på sista noden
+        ptr1 = head;             // ptr pekar pï¿½ sista noden
 
         // Bygg en lista av tecken
         for ( int i = 0; i < chars.length(); i++ ) {
             ptr1.next = new ListNode();          // Addera en ny nod sist
             ptr1 = ptr1.next;                    // Flytta fram till den nya noden
-            ptr1.element = chars.charAt(i);      // Sätt in tecknet
+            ptr1.element = chars.charAt(i);      // Sï¿½tt in tecknet
             ptr1.next = null;                    // Avsluta listan
         } 
         return head;
     }
-    
-    // Se förel. OH
+
+    // Se fï¿½rel. OH
     public static ListNode copy(ListNode l) {
         if ( l == null )
             throw new ListsException("Lists: null passed to copy");
@@ -67,7 +66,7 @@ public class Lists {
         head.next = null;
         ptr1 = head;
 
-        ptr2 = l.next;  // första listelementet i originallistan
+        ptr2 = l.next;  // fï¿½rsta listelementet i originallistan
         while ( ptr2 != null ) {
             ptr1.next = new ListNode();    // Ny nod i kopian
             ptr1 = ptr1.next;              // Flytta fram
@@ -77,8 +76,8 @@ public class Lists {
         }
         return head;
     }
-    
-    // Se förel. OH
+
+    // Se fï¿½rel. OH
     public static ListNode removeAll(ListNode l,char c) {
         if ( l == null )
             throw new ListsException("Lists: null passed to removeAll");
@@ -86,58 +85,86 @@ public class Lists {
         while ( p.next != null ) {
             ListNode temp = p.next;      // Handtag på nästa nod
             if ( temp.element == c )     // Skall den tas bort?
-                p.next = temp.next;      // Länka förbi
+                p.next = temp.next;      // Länka frbi
             else
                 p = p.next;              // Nej, gå vidare *
         }
-        // * p får ej flyttas om den efterföljande noden togs bort!
+        // * p fï¿½r ej flyttas om den efterfï¿½ljande noden togs bort!
         return l;
-     }
-    
+    }
+
     // ---------------- Uppgifter ----------------- 
-    
+
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
-         return null;
+
+        String theString = "";
+
+        while (l.element != null) {
+            theString.concat(l.element);
+            l = l.next;
+        }
+        return theString;
     }
-    
+    // Returnerar en strÃ¤ng med tecknen i l. Metoden muterar ej l.
+
     // Testmetod: JunitListTest.testContains()
     public static boolean contains(ListNode head,char c) {
         return false;
     }
-    
+    // Returnerar true om l innehÃ¥ller c, false annars. Metoden muterar ej l.
+
     // Testmetod: JunitListTest.testCopyUpperCase()
     public static ListNode copyUpperCase(ListNode head) {
         return null;
     }
-    
+    // Returnerar en ny lista med alla tecken i l som Ã¤r stora bokstÃ¤ver (A-Z).
+    // Metoden muterar ej l.
+
     // Testmetod: JunitListTest.testAddFirst()
     public static ListNode addFirst(ListNode l,char c) {  
         return null;
     }
-         
+    // Adderar c fÃ¶rst i l. Metoden muterar l och returnerar en referens till l.
+
     // This is a private utility method.
     private static ListNode getLastNode(ListNode head) {
         return null;
     }
-   
+    // Returnerar en referens till den sista noden i l (listhuvudet om l refererar till en tom lista.)
+    // Metoden muterar ej l
+
     // Testmetod: JunitListTest.testAddLast()
     public static ListNode addLast(ListNode l,char c) {  
         return null;
     }
-    
+    // Adderar c sist i l. Metoden muterar l och returnerar en referens till l.
+
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {  
         return null;
     }
-    
+    // SÃ¤tter samman l1 med l2 sÃ¥ att alla noderna i l2 kommer efter noderna i l1.
+    // Efter operationen refererar l2 till en tom lista. Metoden muterar bÃ¥de l1 och l2,
+    // och returnerar en referens till l1.
+    //Exempel:
+    //    fÃ¶re                               efter
+    // l1 = [a,b,c] l2 = [d,e]            l1 = [a,b,c,d,e] l2 = []
+
     // Testmetod: JunitListTest.testAddAll()
     public static ListNode addAll(ListNode l1,ListNode l2) { 
         return null;
     }
-      
+    // Adderar alla elementen i l2 till slutet av l1. Metoden muterar l1 men ej l2,
+    // och returnerar en referens till l1.
+    //Exempel:
+    // fÃ¶re                           efter
+    // l1 = [a,b,c] l2 = [d,e]        l1 = [a,b,c,d,e] l2 = [d,e]
+
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
         return null;
     }
+    // Returnerar en ny lista med elementen i l i omvÃ¤nd ordning.
+    // Metoden skall ej mutera l.
 }
