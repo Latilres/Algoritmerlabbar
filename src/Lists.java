@@ -164,8 +164,9 @@ public class Lists {
 
     // This is a private utility method.
     private static ListNode getLastNode(ListNode head) {
-        if ( l == null )
-             throw new ListsException("Lists: null passed to getLastNode");
+        //if ( l == null )
+             //throw new ListsException("Lists: null passed to getLastNode");
+        return null;
         
         
     }
@@ -174,18 +175,18 @@ public class Lists {
 
     // Testmetod: JunitListTest.testAddLast()
     public static ListNode addLast(ListNode l,char c) {  
-    	 if ( l == null )
-             throw new ListsException("Lists: null passed to addLast");
-        
+    	 //if ( l == null )
+             //throw new ListsException("Lists: null passed to addLast");
+        return null;
         
     }
     // Adderar c sist i l. Metoden muterar l och returnerar en referens till l.
 
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {      	 
-        if ( l == null )
-             throw new ListsException("Lists: null passed to contact");
-        
+        //if ( l == null )
+             //throw new ListsException("Lists: null passed to contact");
+        return null;
         
         
     }
@@ -198,9 +199,9 @@ public class Lists {
 
     // Testmetod: JunitListTest.testAddAll()
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-    	 if ( l == null )
-             throw new ListsException("Lists: null passed to addAll");
-        
+    	 //if ( l == null )
+             //throw new ListsException("Lists: null passed to addAll");
+        return null;
         
     }
     // Adderar alla elementen i l2 till slutet av l1. Metoden muterar l1 men ej l2,
@@ -211,9 +212,9 @@ public class Lists {
 
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
-    	 if ( l == null )
-             throw new ListsException("Lists: null passed to reverse");
-        
+    	 //if ( l == null )
+             //throw new ListsException("Lists: null passed to reverse");
+       return null; 
         
     }
     // Returnerar en ny lista med elementen i l i omvänd ordning.
