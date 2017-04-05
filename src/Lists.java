@@ -150,73 +150,77 @@ public class Lists {
     // Testmetod: JunitListTest.testAddFirst()
     public static ListNode addFirst(ListNode l,char c) { 
         if ( l == null )
-            throw new ListsException("Lists: null passed to addFrist");
-        
-        ListNode k = new ListNode();		//
-        k.element = c;						//K innehåller c
-        k.next = l.next;					// pekar om till L
-        l.next = k;							// muterar L
-        return l;							//returnera L
+            throw new ListsException("Lists: null passed to addFirst");
+
+        ListNode k = new ListNode();
+        k.element = c;						// k innehåller c
+        k.next = l.next;					// pekar om till l
+        l.next = k;							// muterar l
+        return l;							// returnera l
     }
-    // Adderar c först i l. Metoden muterar l och returnerar en referens till l.
-    }
-    // Adderar c först i l. Metoden muterar l och returnerar en referens till l.
 
     // This is a private utility method.
-    private static ListNode getLastNode(ListNode head) {
-        //if ( l == null )
-             //throw new ListsException("Lists: null passed to getLastNode");
-        return null;
-        
-        
+    private static ListNode getLastNode(ListNode l) {
+        if ( l == null )
+             throw new ListsException("Lists: null passed to getLastNode");
+
+        ListNode k = l;
+        while (k.next != null) {
+            k = k.next;
+        }
+        return k;
     }
-    // Returnerar en referens till den sista noden i l (listhuvudet om l refererar till en tom lista.)
-    // Metoden muterar ej l
 
     // Testmetod: JunitListTest.testAddLast()
-    public static ListNode addLast(ListNode l,char c) {  
-    	 //if ( l == null )
-             //throw new ListsException("Lists: null passed to addLast");
-        return null;
-        
+    public static ListNode addLast(ListNode l,char c) {
+        if ( l == null )
+            throw new ListsException("Lists: null passed to addLast");
+
+        ListNode k = l;
+        while (l.next != null) {
+            l = l.next;
+        }
+        l.element = c;						// muterar l
+        l.next = null;
+        return k;							// returnera l
     }
-    // Adderar c sist i l. Metoden muterar l och returnerar en referens till l.
 
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {      	 
-        //if ( l == null )
-             //throw new ListsException("Lists: null passed to contact");
-        return null;
-        
-        
+        if ( l1 == null || l2 == null )
+             throw new ListsException("Lists: null passed to contact");
+
+        getLastNode(l1).next = l2.next;
+        l2.next = null;
+        return l1;
     }
-    // Sätter samman l1 med l2 så att alla noderna i l2 kommer efter noderna i l1.
-    // Efter operationen refererar l2 till en tom lista. Metoden muterar både l1 och l2,
-    // och returnerar en referens till l1.
-    //Exempel:
-    //    före                               efter
-    // l1 = [a,b,c] l2 = [d,e]            l1 = [a,b,c,d,e] l2 = []
 
     // Testmetod: JunitListTest.testAddAll()
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-    	 //if ( l == null )
-             //throw new ListsException("Lists: null passed to addAll");
-        return null;
+    	 if ( l1 == null || l2 == null )
+             throw new ListsException("Lists: null passed to addAll");
+
+    	 getLastNode(l1).next = l2.next;
+        return l1;
         
     }
-    // Adderar alla elementen i l2 till slutet av l1. Metoden muterar l1 men ej l2,
-    // och returnerar en referens till l1.
-    //Exempel:
-    // före                           efter
-    // l1 = [a,b,c] l2 = [d,e]        l1 = [a,b,c,d,e] l2 = [d,e]
 
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
-    	 //if ( l == null )
-             //throw new ListsException("Lists: null passed to reverse");
-       return null; 
-        
+    	 if ( head == null )
+             throw new ListsException("Lists: null passed to reverse");
+
+    	 ListNode l = head;
+    	 ListNode buff = new ListNode();
+    	 ListNode reverse = new ListNode();
+
+    	 while (l.next != null){
+    	     l = l.next;                    // Flytta fram
+    	     reverse.element = l.element;   // Lägg nästa element i l längst fram i reverse
+    	     buff = reverse;                // Kopiera reverse
+    	     reverse = new ListNode();      // Starta om reverse
+    	     reverse.next = buff;           // Lägg in kopian efter head till reverse
+         }
+    	 return reverse;
     }
-    // Returnerar en ny lista med elementen i l i omvänd ordning.
-    // Metoden skall ej mutera l.
 }

@@ -28,7 +28,7 @@ public class SimpleListTest {
         // Test copyUpperCase
         l3 = Lists.copyUpperCase(l2);
         print("13",l3);
-/*
+
         // Test reverse
         l4 = Lists.reverse(l3);
         print("l4",l4);
@@ -44,7 +44,7 @@ public class SimpleListTest {
         Lists.addAll(l3,l5);
         print("l3",l3);
         print("l5",l5);
-*/
+
         /*
         Utskriften fr�n SimpleListTest
         l1: XabIdRXA7pX
