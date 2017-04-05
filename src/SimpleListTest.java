@@ -7,6 +7,7 @@ public class SimpleListTest {
         ListNode l1,l2,l3,l4,l5;
 
         // Test toList
+        System.out.println("Test toString: ");
         l1 = Lists.toList("XabIdRXA7pX");
         print("l1",l1);
 
@@ -27,7 +28,7 @@ public class SimpleListTest {
         // Test copyUpperCase
         l3 = Lists.copyUpperCase(l2);
         print("13",l3);
-
+/*
         // Test reverse
         l4 = Lists.reverse(l3);
         print("l4",l4);
@@ -43,9 +44,9 @@ public class SimpleListTest {
         Lists.addAll(l3,l5);
         print("l3",l3);
         print("l5",l5);
-
+*/
         /*
-        Utskriften från SimpleListTest
+        Utskriften frï¿½n SimpleListTest
         l1: XabIdRXA7pX
         l2: XabIdRXA7pX
         l2: SabIdRA7pP

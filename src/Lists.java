@@ -83,11 +83,11 @@ public class Lists {
             throw new ListsException("Lists: null passed to removeAll");
         ListNode p = l;
         while ( p.next != null ) {
-            ListNode temp = p.next;      // Handtag p� n�sta nod
+            ListNode temp = p.next;      // Handtag p� n�sta nod
             if ( temp.element == c )     // Skall den tas bort?
-                p.next = temp.next;      // L�nka frbi
+                p.next = temp.next;      // L�nka frbi
             else
-                p = p.next;              // Nej, g� vidare *
+                p = p.next;              // Nej, g� vidare *
         }
         // * p f�r ej flyttas om den efterf�ljande noden togs bort!
         return l;
@@ -97,29 +97,55 @@ public class Lists {
 
     // Testmetod: JunitListTest.testToString()
     public static String toString(ListNode l) {
+        if ( l == null )
+            throw new ListsException("Lists: null passed to toString");
 
-        String theString = "";
-
-        while (l.element != null) {
-            theString.concat(l.element);
-            l = l.next;
+        ListNode p = l;
+        String theString = "";          // En tom sträng
+        while (p.next != null) {        // Finns det fler element?
+            p = p.next;                 // Hoppa över huvud/Gå vidare
+            theString += p.element;     // Lägg till elementet till strängen
         }
         return theString;
     }
-    // Returnerar en sträng med tecknen i l. Metoden muterar ej l.
 
     // Testmetod: JunitListTest.testContains()
-    public static boolean contains(ListNode head,char c) {
+    public static boolean contains(ListNode l, char c) {
+        if ( l == null )
+            throw new ListsException("Lists: null passed to contains");
+
+        ListNode p = l;
+        while (p.next != null) {    // Finns det fler element?
+            if (p.element == c)     // Är elementet lika med c?
+                return true;        // Svar: ja
+            else
+                p = p.next;         // Annars gå vidare.
+        }
         return false;
     }
-    // Returnerar true om l innehåller c, false annars. Metoden muterar ej l.
 
     // Testmetod: JunitListTest.testCopyUpperCase()
     public static ListNode copyUpperCase(ListNode head) {
-        return null;
+        if ( head == null )
+            throw new ListsException("Lists: null passed to copyUpperCase");
+
+        ListNode bigCopy,ptr1,ptr2;
+        bigCopy = new ListNode();             // Kopian
+        bigCopy.next = null;
+        ptr1 = bigCopy;
+
+        ptr2 = head.next;  // f�rsta listelementet i originallistan
+        while ( ptr2 != null ) {
+            if (Character.isUpperCase(ptr2.element)) {
+                ptr1.next = new ListNode();    // Ny nod i kopian
+                ptr1 = ptr1.next;              // Flytta fram
+                ptr1.element = ptr2.element;   // Kopiera tecknet
+                ptr1.next = null;              // Avsluta
+            }
+            ptr2 = ptr2.next;              // Flytta fram i originallistan
+        }
+        return bigCopy;
     }
-    // Returnerar en ny lista med alla tecken i l som är stora bokstäver (A-Z).
-    // Metoden muterar ej l.
 
     // Testmetod: JunitListTest.testAddFirst()
     public static ListNode addFirst(ListNode l,char c) {  
