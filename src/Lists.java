@@ -148,8 +148,17 @@ public class Lists {
     }
 
     // Testmetod: JunitListTest.testAddFirst()
-    public static ListNode addFirst(ListNode l,char c) {  
-        return null;
+    public static ListNode addFirst(ListNode l,char c) { 
+        if ( l == null )
+            throw new ListsException("Lists: null passed to addFrist");
+        
+        ListNode k = new ListNode();		//
+        k.element = c;						//K innehåller c
+        k.next = l.next;					// pekar om till L
+        l.next = k;							// muterar L
+        return l;							//returnera L
+    }
+    // Adderar c först i l. Metoden muterar l och returnerar en referens till l.
     }
     // Adderar c först i l. Metoden muterar l och returnerar en referens till l.
 
