@@ -164,20 +164,30 @@ public class Lists {
 
     // This is a private utility method.
     private static ListNode getLastNode(ListNode head) {
-        return null;
+        if ( l == null )
+             throw new ListsException("Lists: null passed to getLastNode");
+        
+        
     }
     // Returnerar en referens till den sista noden i l (listhuvudet om l refererar till en tom lista.)
     // Metoden muterar ej l
 
     // Testmetod: JunitListTest.testAddLast()
     public static ListNode addLast(ListNode l,char c) {  
-        return null;
+    	 if ( l == null )
+             throw new ListsException("Lists: null passed to addLast");
+        
+        
     }
     // Adderar c sist i l. Metoden muterar l och returnerar en referens till l.
 
     // Testmetod: JunitListTest.testConcat()
-    public static ListNode concat(ListNode l1,ListNode l2) {  
-        return null;
+    public static ListNode concat(ListNode l1,ListNode l2) {      	 
+        if ( l == null )
+             throw new ListsException("Lists: null passed to contact");
+        
+        
+        
     }
     // Sätter samman l1 med l2 så att alla noderna i l2 kommer efter noderna i l1.
     // Efter operationen refererar l2 till en tom lista. Metoden muterar både l1 och l2,
@@ -188,7 +198,10 @@ public class Lists {
 
     // Testmetod: JunitListTest.testAddAll()
     public static ListNode addAll(ListNode l1,ListNode l2) { 
-        return null;
+    	 if ( l == null )
+             throw new ListsException("Lists: null passed to addAll");
+        
+        
     }
     // Adderar alla elementen i l2 till slutet av l1. Metoden muterar l1 men ej l2,
     // och returnerar en referens till l1.
@@ -198,7 +211,10 @@ public class Lists {
 
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {  
-        return null;
+    	 if ( l == null )
+             throw new ListsException("Lists: null passed to reverse");
+        
+        
     }
     // Returnerar en ny lista med elementen i l i omvänd ordning.
     // Metoden skall ej mutera l.
