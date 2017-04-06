@@ -7,7 +7,6 @@ public class SimpleListTest {
         ListNode l1,l2,l3,l4,l5;
 
         // Test toList
-        System.out.println("Test toString: ");
         l1 = Lists.toList("XabIdRXA7pX");
         print("l1",l1);
 

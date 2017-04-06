@@ -121,6 +121,8 @@ public class Lists {
             else
                 p = p.next;         // Annars gå vidare.
         }
+        if (p.element == c)         // Kolla även sista elementet.
+            return true;
         return false;
     }
 
@@ -129,20 +131,20 @@ public class Lists {
         if ( head == null )
             throw new ListsException("Lists: null passed to copyUpperCase");
 
-        ListNode bigCopy,ptr1,ptr2;
-        bigCopy = new ListNode();             // Kopian
-        bigCopy.next = null;
-        ptr1 = bigCopy;
+        ListNode bigCopy,k1,k2;
+        bigCopy = new ListNode();               // Kopian
+        bigCopy.next = null;                    // Utifall det inte finns något att kopiera
+        k1 = bigCopy;
 
-        ptr2 = head.next;  // f�rsta listelementet i originallistan
-        while ( ptr2 != null ) {
-            if (Character.isUpperCase(ptr2.element)) {
-                ptr1.next = new ListNode();    // Ny nod i kopian
-                ptr1 = ptr1.next;              // Flytta fram
-                ptr1.element = ptr2.element;   // Kopiera tecknet
-                ptr1.next = null;              // Avsluta
+        k2 = head.next;  // f�rsta listelementet i originallistan
+        while ( k2 != null ) {
+            if (Character.isUpperCase(k2.element)) {
+                k1.next = new ListNode();    // Ny nod i kopian
+                k1 = k1.next;              // Flytta fram
+                k1.element = k2.element;   // Kopiera tecknet
+                k1.next = null;              // Avsluta
             }
-            ptr2 = ptr2.next;              // Flytta fram i originallistan
+            k2 = k2.next;              // Flytta fram i originallistan
         }
         return bigCopy;
     }
@@ -176,13 +178,10 @@ public class Lists {
         if ( l == null )
             throw new ListsException("Lists: null passed to addLast");
 
-        ListNode k = l;
-        while (l.next != null) {
-            l = l.next;
-        }
-        l.element = c;						// muterar l
-        l.next = null;
-        return k;							// returnera l
+        ListNode ptr = getLastNode(l);    // hämtar  L från getLastNode
+        ptr.next = new ListNode();
+        ptr.next.element = c;
+        return l;
     }
 
     // Testmetod: JunitListTest.testConcat()
@@ -200,9 +199,8 @@ public class Lists {
     	 if ( l1 == null || l2 == null )
              throw new ListsException("Lists: null passed to addAll");
 
-    	 getLastNode(l1).next = l2.next;
-        return l1;
-        
+    	 getLastNode(l1).next = copy(l2).next;
+    	 return l1;
     }
 
     // Testmetod: JunitListTest.testReverse()
@@ -211,7 +209,7 @@ public class Lists {
              throw new ListsException("Lists: null passed to reverse");
 
     	 ListNode l = head;
-    	 ListNode buff = new ListNode();
+    	 ListNode buff;
     	 ListNode reverse = new ListNode();
 
     	 while (l.next != null){
