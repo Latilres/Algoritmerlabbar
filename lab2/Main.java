@@ -100,15 +100,11 @@ public class Main  {
          pl.add(new Person("Kal","karl@gotnet.vg","male",78));
          pl.add(new Person("Beda","beda@fishnet.cod","female",102));
 
-         // Assignment 6: Write code using lambdas here
-        ArrayList<String> oldPersonMail = new ArrayList<>();
-        map((Person p) -> {
-            if (p.getAge() > 65 && p.getGender() == "female")
-                oldPersonMail.add(p.getEmail());
-            return null;
-        }, pl);
-        System.out.println(oldPersonMail);
-
+        // Assignment 6: Write code using lambdas here
+        pl = (ArrayList<Person>) filter(p -> p.getAge() > 65 && p.getGender().equals("female"), pl);
+        ArrayList<String> oldPersonMail = (ArrayList<String>) (map((Person p) -> p.getEmail(), pl));
+        print(oldPersonMail);
+        System.out.println();
     }
 }
 
