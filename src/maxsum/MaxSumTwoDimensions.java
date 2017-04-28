@@ -8,6 +8,8 @@ import java.util.Random;
  */
 public class MaxSumTwoDimensions {
 
+    static boolean sumBad = true;
+    static boolean sumBetter = true;
     private static Random random = new Random();
 
     // A couple of two dimensional algorithms for rectangular matrixes.
@@ -15,14 +17,13 @@ public class MaxSumTwoDimensions {
     // O(n^6)
     public static int maxSubMatrixSumBad( int[][] a ) {
         int maxSum = 0;
-        int thisSum = 0;
 
         for( int r1 = 0; r1 < a.length; r1++ ) { //start of rows
             for( int c1 = 0; c1 < a.length; c1++ ) { //start of columns
 
                 for(int r2 = r1; r2 < a.length; r2++) { //end of rows
                     for(int c2 = c1; c2 < a.length; c2++) { //end of columns
-                        thisSum = 0;
+                        int thisSum = 0;
                         for(int r3 = r1; r3 <= r2; r3++){
                             for(int c3 = c1; c3 <= c2; c3++) {
                                 thisSum += a[r3][c3];
@@ -32,7 +33,6 @@ public class MaxSumTwoDimensions {
                             maxSum = thisSum;
                         }
                     }
-
                 }
             }
         }
@@ -41,8 +41,22 @@ public class MaxSumTwoDimensions {
 
     // O(n^5)
     public static int maxSubMatrixSumBetter( int[][] a ) {
-        // ...
-        return 0;
+        int maxSum = 0;
+
+        for( int r1 = 0; r1 < a.length; r1++ ) { //start of rows
+            for( int c1 = 0; c1 < a.length; c1++ ) { //start of columns
+                int thisSum = 0;
+                for(int r2 = r1; r2 < a.length; r2++) { //end of rows
+                    for(int c2 = c1; c2 < a.length; c2++) { //end of columns
+                        thisSum += a[r2][c2];
+                        if (thisSum > maxSum) {
+                            maxSum = thisSum;
+                        }
+                    }
+                }
+            }
+        }
+        return maxSum;
     }
 
     // O(n^4)
@@ -62,8 +76,27 @@ public class MaxSumTwoDimensions {
     private static void test(int[][] m) {
         // Uncomment as you proceed!
         //         System.out.println("EvenBetter: "+maxSubMatrixSumEvenBetter(m));
-        //         System.out.println("Better: "+maxSubMatrixSumBetter(m));
-        System.out.println("Bad: "+maxSubMatrixSumBad(m));
+        if (sumBetter){
+            long startTime = System.currentTimeMillis( );
+            long totalTime = 0;
+            System.out.println("Better: "+maxSubMatrixSumBetter(m));
+            totalTime = System.currentTimeMillis( ) - startTime;
+            System.out.println( "Better time = " + totalTime + " ms" );
+            if (totalTime > 61000){
+                sumBetter = false;
+            }
+        }
+
+        if (sumBad){
+            long startTime = System.currentTimeMillis( );
+            long totalTime = 0;
+            System.out.println("Bad: "+maxSubMatrixSumBad(m));
+            totalTime = System.currentTimeMillis( ) - startTime;
+            System.out.println( "Bad time = " + totalTime + " ms" );
+            if (totalTime > 61000){
+                sumBad = false;
+            }
+        }
     }
 
     public static void main(String[] arg) {
@@ -76,7 +109,7 @@ public class MaxSumTwoDimensions {
                 {-5,10,-2,1},
                 { 4, 5,-7,1}
             };
-                 test(sampleMatrix);
+        test(sampleMatrix);
 
         int[][] matrix_10x10 = {    // max sum is 213
                 {39,-33,-5,-21,-31,-33,31,32,37,-37},
@@ -90,7 +123,7 @@ public class MaxSumTwoDimensions {
                 {17,-50,33,-21,-30,-44,-28,-12,-37,-6},
                 {-35,35,-27,44,-42,24,36,43,-49,-46}
             };
-                 test(matrix_10x10);
+        test(matrix_10x10);
 
         int[][] matrix_20x20 = {    // max sum is 346
                 {39,19,39,21,-19,-40,-20,9,-29,42,-48,46,-7,31,-50,-41,5,11,30,23},
@@ -114,7 +147,7 @@ public class MaxSumTwoDimensions {
                 {-11,-9,-48,43,13,-47,-1,-32,-45,-10,-22,-26,36,20,-27,44,29,6,18,-28},
                 {28,46,46,-4,-6,-16,-38,-46,-49,-46,-38,-38,2,46,3,49,-12,-11,-9,31}
             };
-                 test(matrix_20x20);
+        test(matrix_20x20);
 /*
         // Test the algorithms for random matrixes of increasing sizes.
         for ( int size = 1; size <= 2048; size *= 2 ) {
@@ -122,6 +155,6 @@ public class MaxSumTwoDimensions {
             System.out.println("\nSize = " + size);
             test(m);
         }
-        */
+    */
     }
 }
