@@ -44,11 +44,13 @@ public class MaxSumTwoDimensions {
         int maxSum = 0;
 
         for( int r1 = 0; r1 < a.length; r1++ ) { //start of rows
-            for( int c1 = 0; c1 < a.length; c1++ ) { //start of columns
-                int thisSum = 0;
-                for(int r2 = r1; r2 < a.length; r2++) { //end of rows
+            for(int r2 = r1; r2 < a.length; r2++) { //end of rows
+                for( int c1 = 0; c1 < a.length; c1++ ) { //start of columns
+                    int thisSum = 0;
                     for(int c2 = c1; c2 < a.length; c2++) { //end of columns
-                        thisSum += a[r2][c2];
+                        for(int r3 = r1; r3 <= r2; r3++){
+                            thisSum += a[r3][c2];
+                        }
                         if (thisSum > maxSum) {
                             maxSum = thisSum;
                         }
@@ -148,13 +150,12 @@ public class MaxSumTwoDimensions {
                 {28,46,46,-4,-6,-16,-38,-46,-49,-46,-38,-38,2,46,3,49,-12,-11,-9,31}
             };
         test(matrix_20x20);
-/*
+        
         // Test the algorithms for random matrixes of increasing sizes.
         for ( int size = 1; size <= 2048; size *= 2 ) {
-            int[][] m = randMatrix(size,size);
-            System.out.println("\nSize = " + size);
-            test(m);
+        int[][] m = randMatrix(size,size);
+        System.out.println("\nSize = " + size);
+        test(m);
         }
-    */
     }
 }
