@@ -10,6 +10,7 @@ public class MaxSumTwoDimensions {
 
     static boolean sumBad = true;
     static boolean sumBetter = true;
+    static boolean sumEvenBetter = true;
     private static Random random = new Random();
 
     // A couple of two dimensional algorithms for rectangular matrixes.
@@ -63,8 +64,20 @@ public class MaxSumTwoDimensions {
 
     // O(n^4)
     public static int maxSubMatrixSumEvenBetter( int[][] a ) {
-        // ...
-        return 0;
+
+        int maxSum = 0;
+        for( int r1 = 0; r1 < a.length; r1++ ) { //start of rows
+            for( int c1 = 0; c1 < a.length; c1++ ) { //start of columns
+                int thisSum = 0;
+                for( int r2 = r1; r2 < a.length; r2++ ) {
+                    for(int c2 = c1; c2 < a.length; c2++){
+                        thisSum = Math.max( 0, thisSum + a[r2][c2] );
+                        maxSum = Math.max( maxSum, thisSum );
+                    }
+                }
+            }
+        }
+        return maxSum;
     }
 
     private static int[][] randMatrix(int m,int n) {
@@ -76,8 +89,17 @@ public class MaxSumTwoDimensions {
     }
 
     private static void test(int[][] m) {
-        // Uncomment as you proceed!
-        //         System.out.println("EvenBetter: "+maxSubMatrixSumEvenBetter(m));
+        if (sumEvenBetter){
+            long startTime = System.currentTimeMillis( );
+            long totalTime = 0;
+            System.out.println("EvenBetter: "+maxSubMatrixSumEvenBetter(m));
+            totalTime = System.currentTimeMillis( ) - startTime;
+            System.out.println( "Even better time = " + totalTime + " ms" );
+            if (totalTime > 61000){
+                sumEvenBetter = false;
+            }
+        }
+
         if (sumBetter){
             long startTime = System.currentTimeMillis( );
             long totalTime = 0;
@@ -150,12 +172,12 @@ public class MaxSumTwoDimensions {
                 {28,46,46,-4,-6,-16,-38,-46,-49,-46,-38,-38,2,46,3,49,-12,-11,-9,31}
             };
         test(matrix_20x20);
-        
+
         // Test the algorithms for random matrixes of increasing sizes.
         for ( int size = 1; size <= 2048; size *= 2 ) {
-        int[][] m = randMatrix(size,size);
-        System.out.println("\nSize = " + size);
-        test(m);
+            int[][] m = randMatrix(size,size);
+            System.out.println("\nSize = " + size);
+            test(m);
         }
     }
 }
