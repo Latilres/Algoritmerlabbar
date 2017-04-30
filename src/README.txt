@@ -8,6 +8,30 @@ Med tanke på att alla algoritmer hade 0 µs för N=10 så stämde det inte så bra ti
 För N=100 till N=1000 stämmer det ganska bra (man får avrunda ganska grovt) för alla utom algoritm 2 som går från 9 till 572 µs, men det är gissningsvis också relativt rätt fast det inte avrundas lika bra. Rent allmänt på algoritmerna så stämmer den förväntade ökningen i beräkningstid bättre ju större N blir.
 Även med ett lite hårdare belastat system har algoritm 2 inte en förväntad ökning mellan N=100 och N=1000 (13-696µs), men därefter har den en förväntad ökning.
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Uppgift 2 - 4 (dock med saker igång på datorn, men inget överdrivet krävande)
+	Bad ger upp vid: (2550 ms vid Size = 64)
+		Size = 128
+		EvenBetter: 3039
+		Even better time = 73 ms
+		Better: 3039
+		Better time = 4534 ms
+		Bad: 3039
+		Bad time = 150474 ms
+	Better ger upp vid: (4534 ms vid Size = 128)
+		Size = 256
+		EvenBetter: 4428
+		Even better time = 1186 ms
+		Better: 4428
+		Better time = 149641 ms
+	EvenBetter get upp vid: (30757 ms vid Size = 512)
+		Size = 1024
+		EvenBetter: 9274
+		Even better time = 1026527 ms
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Uppgift 5
 
 
 
@@ -15,7 +39,14 @@ För N=100 till N=1000 stämmer det ganska bra (man får avrunda ganska grovt) för 
 
 
 
-Så lite igång som möjligt och nystartad dator
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Resultat från uppgift 1:
+	Så lite igång som möjligt och nystartad dator
 Max sum is 11; it goes from 0 to 6
 Max sum is 11; it goes from 0 to 6
 Max sum is 11; it goes from 0 to 6
@@ -48,8 +79,7 @@ Algorithm #3	N = 1000000, time = 39712 microsec
 Algorithm #4	N = 1000000, time = 100650 microsec
 Algorithm #2	N = 1000000, time = 554150000 microsec
 
-Eve, PS, GW2, Discord, Chrome och lite annat bös igång samtidigt
-
+	Eve, PS, GW2, Discord, Chrome och lite annat bös igång samtidigt
 Max sum is 11; it goes from 0 to 6
 Max sum is 11; it goes from 0 to 6
 Max sum is 11; it goes from 0 to 6

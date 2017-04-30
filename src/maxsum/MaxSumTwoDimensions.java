@@ -25,12 +25,12 @@ public class MaxSumTwoDimensions {
                 for(int r2 = r1; r2 < a.length; r2++) { //end of rows
                     for(int c2 = c1; c2 < a.length; c2++) { //end of columns
                         int thisSum = 0;
-                        for(int r3 = r1; r3 <= r2; r3++){
-                            for(int c3 = c1; c3 <= c2; c3++) {
-                                thisSum += a[r3][c3];
+                        for(int r3 = r1; r3 <= r2; r3++){ //the interval of rows
+                            for(int c3 = c1; c3 <= c2; c3++) { // the interval of columns
+                                thisSum += a[r3][c3]; // add all elements in the interval
                             }
                         }
-                        if (thisSum > maxSum) {
+                        if (thisSum > maxSum) { // is this interval better then before?
                             maxSum = thisSum;
                         }
                     }
@@ -48,11 +48,12 @@ public class MaxSumTwoDimensions {
             for(int r2 = r1; r2 < a.length; r2++) { //end of rows
                 for( int c1 = 0; c1 < a.length; c1++ ) { //start of columns
                     int thisSum = 0;
-                    for(int c2 = c1; c2 < a.length; c2++) { //end of columns
-                        for(int r3 = r1; r3 <= r2; r3++){
+                    for(int c2 = c1; c2 < a.length; c2++) { //the interval of columns
+                        for(int r3 = r1; r3 <= r2; r3++){ //the interval of rows
                             thisSum += a[r3][c2];
                         }
-                        if (thisSum > maxSum) {
+                        if (thisSum > maxSum) { // if the column and the interval of rows
+                                                // is bigger than maxSum, then increase
                             maxSum = thisSum;
                         }
                     }
@@ -67,13 +68,14 @@ public class MaxSumTwoDimensions {
 
         int maxSum = 0;
         for( int r1 = 0; r1 < a.length; r1++ ) { //start of rows
-            for( int c1 = 0; c1 < a.length; c1++ ) { //start of columns
+            for( int r2 = r1; r2 < a.length; r2++ ) { //end of rows
                 int thisSum = 0;
-                for( int r2 = r1; r2 < a.length; r2++ ) {
-                    for(int c2 = c1; c2 < a.length; c2++){
-                        thisSum = Math.max( 0, thisSum + a[r2][c2] );
-                        maxSum = Math.max( maxSum, thisSum );
+                for( int c1 = 0; c1 < a.length; c1++ ) { //the interval of columns
+                    for(int r3 = r1; r3 <= r2; r3++){   //the interval of rows
+                        thisSum += a[r3][c1];           //add all rows
                     }
+                    maxSum = Math.max( maxSum, thisSum ); //is the row bigger then maxSum?
+                    thisSum = Math.max( 0, thisSum); //if thisSum is less then 0 that interval is bad
                 }
             }
         }
@@ -92,10 +94,12 @@ public class MaxSumTwoDimensions {
         if (sumEvenBetter){
             long startTime = System.currentTimeMillis( );
             long totalTime = 0;
-            System.out.println("EvenBetter: "+maxSubMatrixSumEvenBetter(m));
+            //we write this each time to control the results from the algorithms
+            System.out.println("EvenBetter: "+maxSubMatrixSumEvenBetter(m)); 
             totalTime = System.currentTimeMillis( ) - startTime;
             System.out.println( "Even better time = " + totalTime + " ms" );
-            if (totalTime > 61000){
+            if (totalTime > 30000){ //Stop testing the algorithm after it failed
+                System.out.println("EvenBetter will fail next increment");
                 sumEvenBetter = false;
             }
         }
@@ -103,10 +107,11 @@ public class MaxSumTwoDimensions {
         if (sumBetter){
             long startTime = System.currentTimeMillis( );
             long totalTime = 0;
+            //we write this each time to control the results from the algorithms
             System.out.println("Better: "+maxSubMatrixSumBetter(m));
             totalTime = System.currentTimeMillis( ) - startTime;
             System.out.println( "Better time = " + totalTime + " ms" );
-            if (totalTime > 61000){
+            if (totalTime > 60000){ //Stop testing the algorithm after it failed
                 sumBetter = false;
             }
         }
@@ -114,18 +119,21 @@ public class MaxSumTwoDimensions {
         if (sumBad){
             long startTime = System.currentTimeMillis( );
             long totalTime = 0;
+            //we write this each time to control the results from the algorithms
             System.out.println("Bad: "+maxSubMatrixSumBad(m));
             totalTime = System.currentTimeMillis( ) - startTime;
             System.out.println( "Bad time = " + totalTime + " ms" );
-            if (totalTime > 61000){
+            if (totalTime > 60000){ //Stop testing the algorithm after it failed
                 sumBad = false;
             }
         }
+
+        System.out.println("~~~~~~~~~~~~~~~");
     }
 
     public static void main(String[] arg) {
         // Three test cases with known answers
-
+        
         // This is the matrix in the lab PM.
         int[][] sampleMatrix = {     // max sum is 21
                 {-1,-2, 1,3},
