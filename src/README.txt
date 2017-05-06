@@ -32,10 +32,42 @@ Uppgift 2 - 4 (dock med saker igång på datorn, men inget överdrivet krävande)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Uppgift 5
+1.
+En sak som kan vara kul att hålla koll på är att linjärsökningen tar samma tid oavsett om dictionary är ordnad eller inte, medans binärsökningen inte funkar.
+För ordpusslet gäller O(n^2 + ml) där 
+	n = längden på en sida till ordpusslet
+	m = orden i pusslet
+	l = längden på orden
 
+Linjärsökning:
+O(M) där M = antalet ord i ordlistan
+Sätter man ihop det med ordpusslet fås
+	O(M(n^2 + ml)) 
 
+Binärsökning:
+Den är logaritmisk => O(log M)
+Som ihop med ordpusslet ger
+	O(log M(n^2 + ml))
 
-
+2.
+Då de första värdena (innan tiden kommer upp i 0.1) är väldigt osäkra kollar vi på värdena efter.
+~~~~~~
+Linjärsökning:
+	Medelkvoten = 8.5
+	Därför bör nästa storlek ta ca 7108,6s
+~~~~~~
+Binärsökning:
+	Medelkvoten = 4.2
+	Därför bör nästa storlek ta ca 416,18s
+~~~~~~
+Binärsökning och prefixtestning:
+	Medelkvoten = 3.9
+	Därför bör nästa storlek ta ca 704,3s
+	Detta gick inte att testa i BlueJ då den fick slut på minne, 
+	men i IntelliJ fick vi: 431.5s..
+	Så därför testade vi även 4096.txt i IntelliJ och fick 102.5s (till skillnad från 180.6s)
+	Dessa värden har en kvot på 4.2, vilket ligger strax över intervallet för de ifrån BlueJ
+	(som gått upp till 4.1), så det känns som ett väldigt rimligt resultat
 
 
 
