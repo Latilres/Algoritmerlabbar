@@ -1,5 +1,9 @@
+package mobile;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import static sun.swing.MenuItemLayoutHelper.max;
 
 public class Mobile {
 	
@@ -14,7 +18,6 @@ public class Mobile {
 		this.weight = weight;
 		left = null;
 		right = null;
-		
 	}
 	
 	public Mobile( Mobile left, float leftLength, Mobile right, float rightLength ) {
@@ -35,18 +38,32 @@ public class Mobile {
 	
 	// Return the maximum height of the mobile
 	public int getHeight() {
-	    // ...
-		return 0;
+	    if (isSimple())
+	    	return 1;
+	    return 1 + max(left.getHeight(),right.getHeight());
 	}  
 	
 	// Print the leaves of the mobile
 	public void flatten()  {
-	      // ...
+		if (isSimple())
+			System.out.print((int)weight + " ");
+		else {
+			left.flatten();
+			right.flatten();
+		}
 	}  
 	
 //	Print a structured view of the mobile
 	public void prettyPrint() {
-	      // ...
+		if (isSimple()){
+			System.out.print("(" + (int)weight + ")");
+		} else {
+			System.out.print("[");
+			left.prettyPrint();
+			System.out.print("," + (int)leftLength + ",");
+			right.prettyPrint();
+			System.out.print("," + (int)rightLength+ "]");
+		}
 	}
 	
 // Determine if the mobile is balanced
@@ -60,19 +77,35 @@ public class Mobile {
 
 // Determine if two mobiles are equal	
 	public boolean equals(  Mobile rhs ) {
-	    // ...
-	    return false;
+		final double eps = 0.000001;
+	    if (isSimple() && rhs.isSimple() && Math.abs(weight - rhs.weight) < eps)
+	    	return true;
+	    else if (leftLength != rhs.leftLength)
+	    	return false;
+	    else if (rightLength != rhs.rightLength)
+	    	return false;
+	    return left.equals(rhs.left) && right.equals(rhs.right);
 	}
 	
 //	Return a clone of this mobile
 	public Mobile clone() {
-         // ...
-         return null;
+         if (isSimple())
+         	return this;
+         return (new Mobile(left.clone(), leftLength, right.clone(), rightLength));
 	}
 	
 // Change this mobile to its mirror image
 	public void mirror() {
-         // ...
+         if (!isSimple()) {
+         	float tmpLength = rightLength;
+         	rightLength = leftLength;
+         	leftLength = tmpLength;
+			right.mirror();
+			Mobile tmpMob = right;
+			left.mirror();
+			right = left;
+			left = tmpMob;
+		 }
 	}
 	
 	private boolean isSimple() { 
@@ -86,21 +119,21 @@ public class Mobile {
 	
 		System.out.println("Total mass: " + m.getWeight() );
 
-		//System.out.println("Height:     " + m.getHeight() );
-		//m.flatten(); System.out.println();
-		//m.prettyPrint(); System.out.println();
+		System.out.println("Height:     " + m.getHeight() );
+		m.flatten(); System.out.println();
+		m.prettyPrint(); System.out.println();
 		if ( m.isBalanced() )
 			System.out.println("Balanced!");
 		else
 			System.out.println("Not balanced!");
-/*		
+
 		Mobile m22 = new Mobile( new Mobile( 2 ), 6,  new Mobile( 3 ), 4 ),
 		       m3 = new Mobile( m1, 10, m22, 2 );
 		if ( m.equals(m3) )
 			System.out.println("Equal!");		// They should be!
 		else
 			System.out.println("Not equal!");
-		
+
 		Mobile c = m.clone();
 		if ( c.equals(m) )
 			System.out.println("Equal!");		// They should be!
@@ -108,14 +141,13 @@ public class Mobile {
 			System.out.println("Not equal!");
 
 		if ( c == m )
-			System.out.println("Identical!");	// They should definately not!
+			System.out.println("Identical!");	// They should definitely not!
 		else
 			System.out.println("Not identical!");
-		
+
 		m.mirror();
 		m.prettyPrint(); System.out.println();
 		m.mirror();
 		m.prettyPrint(); System.out.println();
-*/
 	}
 }

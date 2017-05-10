@@ -1,4 +1,4 @@
- 
+package fraktaler;
 
 public class Main {
 

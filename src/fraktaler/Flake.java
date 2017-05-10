@@ -1,3 +1,4 @@
+package fraktaler;
 public abstract class  Flake {
 	protected Turtle turtle = null; // This will be initiated by draw in subclasses
 	

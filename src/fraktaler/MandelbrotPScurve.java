@@ -1,3 +1,4 @@
+package fraktaler;
 // Benoit Mandelbrot's Peano Snow Flake Curve
 
 public class MandelbrotPScurve extends Flake {

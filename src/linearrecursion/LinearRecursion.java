@@ -12,26 +12,25 @@ public class LinearRecursion {
         char c = (char)System.in.read();
         //todo
     }
-        
+
+    private static boolean onlyOneNegative(int a, int b) {
+        int negative = 0;
+        if (a < 0)
+            negative += 1;
+        if (b < 0)
+            negative += 1;
+        if (negative == 1)
+            return true;
+        return false;
+    }
+
 // A.2
     public static int multiply(int m,int n) {
-        boolean oneNegative = false;
-        if (m < 0){
-            oneNegative = true;
+        boolean oneNegative = onlyOneNegative(m,n);
+        if (m<0)
             m = -m;
-            if (n < 0) {
-                oneNegative = false;
-                n = -n;
-            }
-        }
-        if (n < 0) {
-            oneNegative = true;
+        if (n<0)
             n = -n;
-            if (m < 0) {
-                oneNegative = false;
-                m = -m;
-            }
-        }
         if (m<n){
             int tmp = n;
             n = m;
@@ -79,10 +78,10 @@ public class LinearRecursion {
     }
 
 // A.4
- public static ListNode copy( ListNode l ) {
-        // toDo 
+    public static ListNode copy( ListNode l ) {
+        //todo
         return null;
- }
+    }
     
 // A.5  
  public static ListNode append( ListNode l1, ListNode l2 ) {
