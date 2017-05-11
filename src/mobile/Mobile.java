@@ -1,3 +1,5 @@
+// Author(s): Fressia Merino & Therese Tengdahl
+// Date: 10 May 2017
 package mobile;
 
 import java.io.BufferedReader;

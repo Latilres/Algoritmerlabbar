@@ -11,11 +11,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.Map;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 
@@ -39,6 +35,7 @@ public class Gui {
 	 */
 	private void makeFrame() {
 		frame = new JFrame("Fractal flake displayer");
+		frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		JPanel contentPane = (JPanel)frame.getContentPane();
 		contentPane.setBorder(new EmptyBorder(6, 6, 6, 6));
 		// Specify the layout manager with nice spacing
