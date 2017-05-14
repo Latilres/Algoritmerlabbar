@@ -11,6 +11,5 @@ public class FlakeDB {
 		theFlakes.put("Concave Koch", new ConcaveKoch());
 		theFlakes.put("Penta", new Penta());
 		theFlakes.put("Sierpinski", new Sierpinski());
-		
 	}
 }

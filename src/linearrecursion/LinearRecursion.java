@@ -4,33 +4,35 @@ import java.io.IOException;
 /**
  * @author Fressia Merino
  *         Therese Tengdahl
- * @version 2017-05-
+ * @version 2017-05-14
  */
 public class LinearRecursion {
 // A.1
     public static void reverseInput() throws IOException {
-        char c = (char)System.in.read();
-        //todo
-    }
+        char c = ' ';
 
-    private static boolean onlyOneNegative(int a, int b) {
-        int negative = 0;
-        if (a < 0)
-            negative += 1;
-        if (b < 0)
-            negative += 1;
-        if (negative == 1)
-            return true;
-        return false;
+        try {
+            c = (char) System.in.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (c != '\n') {
+            reverseInput();
+            System.out.print(c);
+        }
     }
 
 // A.2
     public static int multiply(int m,int n) {
-        boolean oneNegative = onlyOneNegative(m,n);
-        if (m<0)
+        int negative = 0;
+        if (m<0) {
             m = -m;
-        if (n<0)
+            negative += 1;
+        }
+        if (n<0) {
             n = -n;
+            negative += 1;
+        }
         if (m<n){
             int tmp = n;
             n = m;
@@ -41,7 +43,7 @@ public class LinearRecursion {
             return 0;
         if (n == 1)
             return m;
-        if (oneNegative)
+        if (negative == 1)
             return -( m+ multiply(m, n-1));
         return m + multiply(m, n-1);
     } 
@@ -78,15 +80,18 @@ public class LinearRecursion {
     }
 
 // A.4
-    public static ListNode copy( ListNode l ) {
-        //todo
-        return null;
+    public static ListNode copy(ListNode l) {
+        if (l == null)
+            return null;
+        else
+            return cons(l.element, copy(l.next));
     }
     
 // A.5  
  public static ListNode append( ListNode l1, ListNode l2 ) {
-        // toDo
-        return null;
+        if (l1 == null)
+            return copy(l2);
+        return cons(l1.element,append(l1.next,l2));
  }
     
 /**********************************************
@@ -95,8 +100,8 @@ public class LinearRecursion {
  * ********************************************/
     public static void main(String[] args) throws IOException {
 // A.1
-     //reverseInput();
-     //System.out.println();
+//     reverseInput();
+     System.out.println();
 // A.2
       System.out.println("\nTesting multiply:");
       System.out.println(multiply(5,7));
@@ -119,32 +124,32 @@ public class LinearRecursion {
             cons(4,cons(5,cons(6,null)))    // [4,5,6]
         };
         
-//      System.out.println("\nIn the test cases below, you should verify that"); 
-//      System.out.println("the ll[i] printouts are consistent with the definitions"); 
-//      System.out.println("of the lists in the ll array. Those lists must not be"); 
-//      System.out.println("changed by your functions."); 
+      System.out.println("\nIn the test cases below, you should verify that");
+      System.out.println("the ll[i] printouts are consistent with the definitions");
+      System.out.println("of the lists in the ll array. Those lists must not be");
+      System.out.println("changed by your functions.");
 // A.4  
-//      System.out.println("\nTesting copy:");    
-//      for ( int i = 0; i < ll.length; i++ ) {
-//          ListNode copy = cons(999,copy(ll[i]));
-//          print("cons(999,copy(ll["+i+"]))",copy);       // result
-//          print("ll["+i+"]",ll[i]); // original should be untouched
-//      }
+      System.out.println("\nTesting copy:");
+      for ( int i = 0; i < ll.length; i++ ) {
+          ListNode copy = cons(999,copy(ll[i]));
+          print("cons(999,copy(ll["+i+"]))",copy);       // result
+          print("ll["+i+"]",ll[i]); // original should be untouched
+      }
 // A.5     
-//         System.out.println("\nTesting append from left:"); 
-//         for ( int i = 0; i < ll.length - 1; i++ ) {
-//             ListNode appended = append(ll[i],ll[ll.length-1]);
-//             print("append(ll["+i+"],ll["+(ll.length-1)+"])",appended);       // result
-//             print("ll["+i+"]",ll[i]); // original should be untouched
-//             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
-//         }
-//         
-//         System.out.println("\nTesting append from right:"); 
-//         for ( int i = 0; i < ll.length - 1; i++ ) {
-//             ListNode appended = append(ll[ll.length-1],ll[i]);
-//             print("append(ll["+(ll.length-1)+"],ll["+i+"])",appended);       // result
-//             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
-//             print("ll["+i+"]",ll[i]); // original should be untouched
-//         }
+         System.out.println("\nTesting append from left:");
+         for ( int i = 0; i < ll.length - 1; i++ ) {
+             ListNode appended = append(ll[i],ll[ll.length-1]);
+             print("append(ll["+i+"],ll["+(ll.length-1)+"])",appended);       // result
+             print("ll["+i+"]",ll[i]); // original should be untouched
+             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
+         }
+
+         System.out.println("\nTesting append from right:");
+         for ( int i = 0; i < ll.length - 1; i++ ) {
+             ListNode appended = append(ll[ll.length-1],ll[i]);
+             print("append(ll["+(ll.length-1)+"],ll["+i+"])",appended);       // result
+             print("ll["+(ll.length-1)+"]",ll[ll.length-1]); // original should be untouched
+             print("ll["+i+"]",ll[i]); // original should be untouched
+         }
     }
 }
