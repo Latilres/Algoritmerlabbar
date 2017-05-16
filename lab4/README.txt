@@ -34,10 +34,8 @@ Uppgift 2 - 4 (dock med saker igång på datorn, men inget överdrivet krävande)
 Uppgift 5
 1.
 En sak som kan vara kul att hålla koll på är att linjärsökningen tar samma tid oavsett om dictionary är ordnad eller inte, medans binärsökningen inte funkar.
-För ordpusslet gäller O(n^2 + ml) där 
-	n = längden på en sida till ordpusslet
-	m = orden i pusslet
-	l = längden på orden
+
+ordlistans storlek M och pusslets storlek N med uttryck på formen T(M,N) = O(lämplig funktion).
 
 Linjärsökning:
 O(M) där M = antalet ord i ordlistan
