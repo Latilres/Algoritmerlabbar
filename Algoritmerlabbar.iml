@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="false">
+    <output url="file:///production/Algoritmerlabbar" />
+    <output-test url="file:///test/Algoritmerlabbar" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/observerExample" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lab4/maxsum" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lab4/wordsearch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/maze" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

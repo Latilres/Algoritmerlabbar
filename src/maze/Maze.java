@@ -1,13 +1,15 @@
+import java.util.Observable;
 
 public class Maze extends Board {
   		
     public Maze( int rows, int cols ) {
     	super(rows,cols);
 //    	 Implement this!
+        create();
     }
     
     public void create() {
-//    	 Implement this method!
+
     }
     
     public void search() {

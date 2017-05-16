@@ -77,6 +77,7 @@ public class Gui
      */
     private void createMaze()
     {
+        Maze theMaze = new Maze(height,width);
     	showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
 //    	Develop this method!
     	searchButton.setEnabled(true);
