@@ -29,9 +29,9 @@ public class Canvas extends JPanel
     /**
      * Create a Canvas.
      * @param frame  the frame that will contain this canvas
-     * @param width  the desired width for the canvas
-     * @param height  the desired height for the canvas
-     * @param bgClour  the desired background colour of the canvas
+     * @ width  the desired width for the canvas
+     * @ height  the desired height for the canvas
+     * @ bgClour  the desired background colour of the canvas
      */
     public Canvas(JFrame frame, Color bgColour)
     {

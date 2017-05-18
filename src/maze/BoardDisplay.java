@@ -24,6 +24,8 @@ public class BoardDisplay extends Board implements Observer {
 		// compute offset to center it
 		rowOffset = (height-maxRow*gridSize)/2 + 2;
 		colOffset = (width-maxCol*gridSize)/2 + 2;
+
+		drawGrid();
 	}
 	
 	private void drawGrid() {
@@ -80,6 +82,10 @@ public class BoardDisplay extends Board implements Observer {
 	}
 	    
 	public void update(Observable o, Object arg) {
-//		 Develop this method!
+	    if (o instanceof Maze){
+            Pair<Point, Point.Direction> theCell = (Pair<Point, Point.Direction>) arg;
+                knockDownWall(theCell.first.row, theCell.first.col, theCell.second);
+
+        }
 	}
 }

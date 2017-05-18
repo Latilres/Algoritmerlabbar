@@ -4,5 +4,5 @@ comment0.target=Point(int,\ int)
 comment1.params=target
 comment1.target=Point.Direction\ getDirection(Point)
 comment2.params=d
-comment2.target=void\ move(Direction)
+comment2.target=void\ move(Point.Direction)
 numComments=3

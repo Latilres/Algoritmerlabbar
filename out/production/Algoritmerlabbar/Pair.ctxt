@@ -1,4 +1,4 @@
 #BlueJ class context
 comment0.params=first\ second
-comment0.target=Pair(A,\ B)
+comment0.target=Pair(java.lang.Object,\ java.lang.Object)
 numComments=1
