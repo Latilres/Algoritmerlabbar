@@ -82,8 +82,6 @@ public class Gui
     {
         theMaze = new Maze(height, width);
         boardDisplay = new BoardDisplay(canvas, height, width);
-    	//showValues(width,height);  // Please remove this call when things starts to work correctly (OW we all go crazy!)
-//    	Develop this method!
         theMaze.addObserver(boardDisplay);
         theMaze.create();
     	searchButton.setEnabled(true);

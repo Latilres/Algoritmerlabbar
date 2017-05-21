@@ -83,9 +83,11 @@ public class BoardDisplay extends Board implements Observer {
 	    
 	public void update(Observable o, Object arg) {
 	    if (o instanceof Maze){
+	    	// updates the maze with paths through
 	    	if (arg instanceof Pair) {
 	    		Pair<Integer, Point.Direction> theCell = (Pair<Integer, Point.Direction>) arg;
 				knockDownWall(theCell.first, theCell.second);
+				// paints the path through the maze
 			} else if (arg instanceof Integer) {
 	    		fillCell((Integer) arg);
 			}

@@ -51,7 +51,7 @@ public class Maze extends Board {
                     int unionID2 = checkUnionSet.find(cellID2);
 
                     if (unionID1 != unionID2) { // Checks so that the sets are separate, in order to not create circles
-                        checkUnionSet.union(unionID1, unionID2); // lägger ihop två set
+                        checkUnionSet.union(unionID1, unionID2); // adds two sets together
 
                         // I think this adds a cost between the cells, so that vertexMap has something to go on..
                         extendedGraph.addEdge(cellID1,cellID2,1);
@@ -79,6 +79,7 @@ public class Maze extends Board {
 
         List<Integer> thePath = extendedGraph.getPath(maxCell-1);
 
+        // goes through all elements in the list and notify observer
         for (Integer theSteppes: thePath) {
             setChanged();
             notifyObservers(theSteppes);

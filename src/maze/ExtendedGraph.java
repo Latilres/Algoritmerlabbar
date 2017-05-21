@@ -4,10 +4,10 @@ import java.util.NoSuchElementException;
 
 public class ExtendedGraph extends Graph{
 
-    //skall returnera en lista innehållande den senaste vägen från start- till destinationsnod som hittades med grafsökningsalgoritmen.
+    // Båda getPath har baserat sig väldigt mycket på printPath, det är nästan rakt av, kolla på dem för att förstå
+
     public List<Integer> getPath(int destName) {
 
-        System.out.println(vertexMap.get(0));
         unweighted(0);
         Vertex vertex = vertexMap.get(destName);
 
@@ -22,8 +22,6 @@ public class ExtendedGraph extends Graph{
         return null;
     }
 
-    // Den privata metoden skall vara rekursiv och fungera självständigt utan hjälp av extra instans- eller klassvariabler.
-    // Tips: i basklassen finns funktionen printPath som delvis kan användas som förebild
     private List<Integer> getPath(Vertex dest, List<Integer> list) {
 
         if (dest == null)
