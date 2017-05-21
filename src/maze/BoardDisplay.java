@@ -83,9 +83,10 @@ public class BoardDisplay extends Board implements Observer {
 	    
 	public void update(Observable o, Object arg) {
 	    if (o instanceof Maze){
-            Pair<Point, Point.Direction> theCell = (Pair<Point, Point.Direction>) arg;
-                knockDownWall(theCell.first.row, theCell.first.col, theCell.second);
-
+	    	if (arg instanceof Pair) {
+	    		Pair<Integer, Point.Direction> theCell = (Pair<Integer, Point.Direction>) arg;
+				knockDownWall(theCell.first, theCell.second);
+			}
         }
 	}
 }
