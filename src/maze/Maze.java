@@ -3,8 +3,7 @@ import java.util.Observable;
 import java.util.Random;
 
 public class Maze extends Board {
-    // associated med DisjointSets och Pair (kan navigera från maze till de andra)
-    // inherits från Board
+
     private int rows, cols;
     private Random random;
     private ExtendedGraph extendedGraph;
@@ -16,8 +15,8 @@ public class Maze extends Board {
     }
     
     public void create() {
-        DisjointSets checkUnionSet = new DisjointSets(maxCell); //använd för att kolla om väggar ska slås ut eller inte, genom att kontrollera ifall de tillhör samma mängd
-        int totCells = maxCell;  //antal celler, som måste sloss ihop
+        DisjointSets checkUnionSet = new DisjointSets(maxCell); // used to check if walls should be taken down or not, by checking if they belong to the same set
+        int totCells = maxCell;
         random = new Random();
         extendedGraph = new ExtendedGraph();
         Point.Direction dir = Point.Direction.ERROR;
@@ -42,7 +41,6 @@ public class Maze extends Board {
                     dir = Point.Direction.LEFT;
 
                 closeCell.move(dir);
-                //System.out.println("randrow: " + randRow +". randcol: " + randCol + ". dir: " + dir);
 
                 if (isValid(closeCell)) {
 
@@ -52,11 +50,15 @@ public class Maze extends Board {
                     int unionID1 = checkUnionSet.find(cellID1);
                     int unionID2 = checkUnionSet.find(cellID2);
 
-                    if (unionID1 != unionID2) {
-                        checkUnionSet.union(unionID1, unionID2);
+                    if (unionID1 != unionID2) { // Checks so that the sets are separate, in order to not create circles
+                        checkUnionSet.union(unionID1, unionID2); // lägger ihop två set
+
+                        // I think this adds a cost between the cells, so that vertexMap has something to go on..
+                        extendedGraph.addEdge(cellID1,cellID2,1);
+                        extendedGraph.addEdge(cellID2,cellID1,1);
+
                         setChanged();
                         notifyObservers(new Pair<>(cellID1, dir));
-                        //System.out.print(totCells);
                         totCells--;
 
                     }
@@ -74,8 +76,12 @@ public class Maze extends Board {
     }
     
     public void search() {
+
         List<Integer> thePath = extendedGraph.getPath(maxCell-1);
+
+        for (Integer theSteppes: thePath) {
+            setChanged();
+            notifyObservers(theSteppes);
+        }
     }
-    
-//    ...
 }
