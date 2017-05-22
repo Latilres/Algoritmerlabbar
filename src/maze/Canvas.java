@@ -19,6 +19,7 @@ import java.awt.*;
  *   26.04.2006	  uh	  adapted to fit the needs of the Maze appication
  */
 
+
 public class Canvas extends JPanel
 {
     private JFrame frame;
