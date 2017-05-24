@@ -35,17 +35,15 @@ Uppgift 5
 1.
 En sak som kan vara kul att hålla koll på är att linjärsökningen tar samma tid oavsett om dictionary är ordnad eller inte, medans binärsökningen inte funkar.
 
-ordlistans storlek M och pusslets storlek N med uttryck på formen T(M,N) = O(lämplig funktion).
+Det uppdaterade nu är taget från solvePuzzle() och solveDirection.
+N är kvadratiskt eftersom stränglängden inte ger ett ökande bidrag efter ett tag (det längsta ordet är omkring 30), hade man inte haft det borde vi haft N^3 istället.
 
 Linjärsökning:
-O(M) där M = antalet ord i ordlistan
-Sätter man ihop det med ordpusslet fås
-	O(M(n^2 + ml)) 
+	O(M*N^2) 
 
 Binärsökning:
 Den är logaritmisk => O(log M)
-Som ihop med ordpusslet ger
-	O(log M(n^2 + ml))
+	O(log M*N^2)
 
 2.
 Då de första värdena (innan tiden kommer upp i 0.1) är väldigt osäkra kollar vi på värdena efter.

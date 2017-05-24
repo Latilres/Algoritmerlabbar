@@ -80,20 +80,24 @@ public class Mobile {
 // Determine if two mobiles are equal	
 	public boolean equals(  Mobile rhs ) {
 		final double eps = 0.000001;
-	    if (isSimple() && rhs.isSimple() && Math.abs(weight - rhs.weight) < eps)
-	    	return true;
-	    else if (leftLength != rhs.leftLength)
-	    	return false;
-	    else if (rightLength != rhs.rightLength)
-	    	return false;
-	    return left.equals(rhs.left) && right.equals(rhs.right);
+	    if (isSimple() && rhs.isSimple())
+	    	return Math.abs(weight - rhs.weight) < eps;
+	    else if (!isSimple() && !rhs.isSimple()){
+	    	if (leftLength != rhs.leftLength)
+				return false;
+			else if (rightLength != rhs.rightLength)
+				return false;
+			return left.equals(rhs.left) && right.equals(rhs.right);
+		} else
+			return false;
 	}
 	
 //	Return a clone of this mobile
 	public Mobile clone() {
          if (isSimple())
-         	return this;
-         return (new Mobile(left.clone(), leftLength, right.clone(), rightLength));
+         	return new Mobile(weight);
+         else
+         	return (new Mobile(left.clone(), leftLength, right.clone(), rightLength));
 	}
 	
 // Change this mobile to its mirror image
@@ -136,6 +140,7 @@ public class Mobile {
 		else
 			System.out.println("Not equal!");
 
+		System.out.println("direkt under här");
 		Mobile c = m.clone();
 		if ( c.equals(m) )
 			System.out.println("Equal!");		// They should be!

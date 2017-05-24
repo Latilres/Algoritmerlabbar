@@ -22,37 +22,22 @@ public class LinearRecursion {
         }
     }
 
+    //if (nullcheck, instanceof check) return false
+    // else if (isSimple) return m.isSimple && floatEquals(weight, m.weight) else return ...........
 // A.2
     public static int multiply(int m,int n) {
-        int negative = 0;
-        if (m<0) {
-            m = -m;
-            negative += 1;
-        }
-        if (n<0) {
-            n = -n;
-            negative += 1;
-        }
-        if (m<n){
-            int tmp = n;
-            n = m;
-            m = tmp;
-        }
-        // härifrån är m & n positiva och n är minst.
-        if (n == 0)
+        if (m == 0) {
             return 0;
-        if (n == 1)
-            return m;
-        if (negative == 1)
-            return -( m+ multiply(m, n-1));
-        return m + multiply(m, n-1);
+        } else if (m < 0) {
+            return -multiply(-m, n);
+        } else {
+            return n + multiply(m-1, n);
+        }
     } 
     
 // A.3
     public static int countDigits(int n) {
-        if (n == 0)
-            return 1;
-        if (n/10 < 1)
+        if (n == 0 || n/10 < 1)
             return 1;
         else
             return 1 + countDigits(n/10);
