@@ -51,10 +51,12 @@ Då de första värdena (innan tiden kommer upp i 0.1) är väldigt osäkra kollar vi 
 Linjärsökning:
 	Medelkvoten = 8.5
 	Därför bör nästa storlek ta ca 7108,6s
+Detta är inte det förväntade värdet då teorin säger att medelkvoten borde vara 4. gissningsvis beror skillnaden på att M tillför en så stor del av tiden när ordlängden ökas, detta bidraget håller nog på att minskas vilket är varför tidskvoten till sista pusselstorleken är 6.9. Dvs. hade vi kunnat köra tillräckligt stora pussel hade vi antagligen närmat oss en medelkvot på 4.
 ~~~~~~
 Binärsökning:
 	Medelkvoten = 4.2
 	Därför bör nästa storlek ta ca 416,18s
+Den skillnad som finns här är antagligen beroende på samma sak som för linjärsökningen, men då binärsökningen är mycket effektivare försvinner också effekten från den mycket snabbare än för linjärsökningen och vi ser också på slutet att tidskvoten går mot 4 mycket tidigare.
 ~~~~~~
 Binärsökning och prefixtestning:
 	Medelkvoten = 3.9
